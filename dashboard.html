@@ -1,0 +1,311 @@
+<meta charset="utf-8">
+<title>Twitch Subtitles with OBS Browser Source Plugin</title>
+<link rel="canonical" href="https://www.pubnub.com/developers/twitch-tv-obs-subtitles" />
+<link id="favicon" rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==">
+<link rel="stylesheet" href="css/dashboard.css" />
+
+<!-- Header Area -->
+<div id="header">
+    <div class="shooting-stars">
+        <e></e><e></e><e></e><e></e><e></e><e></e><e></e>
+        <e></e><e></e><e></e><e></e><e></e><e></e><e></e>
+        <e></e><e></e><e></e><e></e><e></e><e></e><e></e>
+        <div class="overlay"></div>
+    </div>
+    <div class="content">
+        <div class="emblem"></div>
+        <div class="obs-icons"></div>
+        <div class="twitch-icons"></div>
+        <div class="title">
+            <e><twitch></twitch></e>&nbsp;&nbsp;<!--
+            --><nowrap><e>T</e><e>w</e><e>i</e><e>t</e><e>c</e><e>h</e><e>&nbsp;</e></nowrap><!--
+            --><nowrap><e>S</e><e>u</e><e>b</e><e>t</e><e>i</e><e>t</e><e>l</e><e>e</e><e>s</e></nowrap>
+            <div class="subtitle">
+                Add subtitles to your stream,
+                followers read what you say.
+            </div>
+        </div>
+
+
+        <div id="instructions">
+            <div class="live-example">
+                <!-- Select Font Style -->
+                <div id="subtitle-styles">
+                    <div style="text-align:center;display:block;width:90%;">Default</div>
+                    <div style="background:linear-gradient(to right, rgba(252,236,252,1) 0%, rgba(251,166,225,1) 50%, rgba(253,137,215,1) 51%, rgba(255,124,216,1) 100%);;font-weight:800;-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;">Pink</div>
+                    <div style="background:linear-gradient(to right,orange,yellow,green,cyan,blue,violet) 100%;font-weight:800;-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;">Rainbow</div>
+                    <div style="font-weight:800;">Bold</div>
+                    <div style="color:yellow;font-weight:400;">Yellow</div>
+                    <div style="color:blue;font-weight:400;text-shadow: 0 0 5px #fff;">Blue</div>
+                    <div style="background:white;color:black;font-weight:400;text-shadow:none;text-shadow:none;padding:10px;">Inverted</div>
+                    <div style="color:rgba(255,255,255,0.0);text-shadow: 0 0 5px #222;">Shadow</div>
+                    <div style="color:rgba(0,0,0,0.9);text-shadow: 0 0 5px #fff;">Clean</div>
+                    <div style="font-family:Monaco,monospace;">Mono</div>
+                    <div style="background:black;font-weight:600;text-transform:uppercase;text-shadow:none;padding:10px;">Caption</div>
+                </div>
+                <!-- Preview Iframe -->
+                <iframe
+                    id="subtitle-display"
+                    src=""
+                    allow="microphone"
+                ></iframe>
+            </div>
+            <div class="installation-guide">
+                <div id="step-1" class="install-step">
+                    <step>1</step>
+                    <detail>Enable your microphone.</detail>
+                </div>
+                <div id="step-2" class="install-step">
+                    <step>2</step>
+                    <detail>
+                        <input id="obs-url" onclick="this.focus();this.select()"
+                            readonly="readonly" value="Complete Step 2">
+                        Copy URL into OBS Browser Source.
+                    </detail>
+                </div>
+                <div id="step-3" class="install-step">
+                    <step>3</step>
+                    <detail>
+                        <strong>Keep this page open while you stream.</strong>
+                        This page captures your voice transcript and
+                        transmits the subtitles into OBS via PubNub.
+                        If you accidentally close this page, you can always come back.
+                        You may need to repeat Step 2.
+                        Reload this page
+                        and re-copy/paste the URL into OBS Browser Source.
+                    </detail>
+                </div>
+                <div id="step-4" class="install-step">
+                    <step>4</step>
+                    <detail>
+                        <a target="fork"
+                        href="https://github.com/stephenlb/twitch-tv-obs-subtitles/fork"
+                        >Customize the look</a>: 
+                        You may fork the GitHub repo so you can
+                        change the Font and Colors.
+                        Start by forking the repository then
+                        read further details below on this page.
+                    </detail>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Video Tutorial Area -->
+<div id="video-tutorial">
+    <div class="content">
+        <h2>How to add Subtitles for OBS Live Streams</h2>
+    </div>
+    <div class="content">
+        <div>
+            <div class="step">Step 1</div>
+            <img src="https://i.imgur.com/ScIDnJc.gif" 
+                alt="How to add Subtitles to Twitch TV in OBS Step 1">
+        </div>
+        <div>
+            <div class="step">Step 2</div>
+            <img src="https://i.imgur.com/MFhOheM.png" 
+                alt="How to add Subtitles to Twitch TV in OBS Step 2">
+        </div>
+        <div>
+            <div class="step">Step 3</div>
+            <img src="https://i.imgur.com/s0vvMlC.gif" 
+                alt="How to add Subtitles to Twitch TV in OBS Step 3">
+        </div>
+    </div>
+</div>
+
+<!-- Hero Call-out Area -->
+<div id="hero-call-out">
+    <div class="content">
+        <div>
+            Free and
+            <strong><a target="open-source"
+                href="https://github.com/stephenlb/twitch-tv-obs-subtitles/">Open Source</a></strong>
+        </div>
+        <div><strong>Twitch TV</strong> and YouTube Live</div>
+        <div><strong>Webinars</strong> and Screencasts</div>
+    </div>
+</div>
+
+<!-- StreamElements Official Support -->
+<div id="streamelements">
+    <div class="content">
+        <div class="details">
+            Add subtitles in OBS.Live brought to you by
+            <a href="https://strms.net/obslivepubnub" target="streamelements">StreamElements</a> ❤️
+        </div>
+        <div>
+            <a href="https://strms.net/obslivepubnub" target="streamelements"><!--
+                --><video class="obs-live-logo" loop="loop" autoplay="autoplay">
+                    <source src="https://cdn.streamelements.com/assets/homepage/obslive/obs-landing-pt2.webm">
+                </video><!--
+            --></a>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content Area -->
+<div id="article">
+
+    <div class="content streamelements-details">
+        <h2>Add Twitch Subtitles in OBS.Live</h2>
+        <p>
+            First,
+            <a href="https://strms.net/obslivepubnub" target="streamelements">install OBS.Live</a>
+            and then come back to this page.
+            Run OBS.Live on your computer.
+            Next add a <strong>Browser</strong> to your Scene.
+            You can find this under the *Sources* panel using the [ + ] plus icon.
+            Include the URL from <strong>Step 2</strong> at the
+            <a href="#header">top of this page</a>.
+            That's it!
+        </p><p>
+            <a href="https://strms.net/obslivepubnub" target="streamelements"><!--
+            --><img alt="StreamElements Logo" src="https://www.pubnub.com/wp-content/uploads/2019/03/StreamElements-OBS-Live-Subtitles.png"></a>
+        </p><p>
+            StreamElements desktop app enables easy management of your stream and
+            is the home of the biggest streamers on Twitch.tv.
+            The streaming tools platform helps gamers and content creators manage their stream,
+            raise production value, increase engagement, and monetize their content.
+        </p>
+    </div>
+
+    <div class="content">
+        <h2>How to make OBS Plugins for Twitch TV</h2>
+        <p>
+            Plugins should be easy to make!
+            And for OBS, this is true.
+            Hurray!
+            The best way by far, my opinion, is using
+            <strong>OBS Browser Sources</strong>.
+            Start by trying to add a new Browser Source to your Scene.
+            The following example shows you how to add the source.
+        </p><p>
+            <img src="https://imgur.com/oPXWvZk.gif"
+                alt="Add OBS Browser Source"
+                width="100%">
+        </p><p>
+            The above shows you how to add a Browser Source, which is
+            easiest way to add your custom plugin into OBS.
+            You can set the URL to a local html file which contains your
+            code for the plugin.
+            The code in the HTML file may be simple or complex.
+        </p><p>
+            <a target="example-html"
+                href="https://github.com/stephenlb/twitch-tv-obs-subtitles/blob/master/subtitles.html">
+                Twitch TV OBS Subtitles</a>
+            is a great example of what you may put into the HTML file.
+            It's really that simple!
+            You can have animated Cats and cat pictures that change over time.
+            Pretty much anything you can image, just with some HTML and CSS.
+            It's a whole new world and you can have as many cats as you like!
+        </p>
+    </div>
+
+    <div class="content">
+        <h2>Modern Closed Captioning ( Subtitles )</h2>
+        <p>
+            Live TV traditionally required a human in a TV studio to
+            transcribe spoken voice and sounds on TV.
+            The studio transcriber's job is to listen to the live video
+            feed and as quickly and accurately as possible type the
+            transcription into a computer terminal which appends the closed
+            captioning directly into the Television Signal.
+            The technical job title is a "stenographer".
+        </p><p>
+            <video autoplay loop muted
+                title="Video with news caster and Closed Captioning texted displaed on the screen."
+                src="https://i.imgur.com/GLai8ij.mp4" width="100%">
+        </p><p>
+            During a live broadcast of a special event or of a news program,
+            captions appear just a few seconds behind the action to show
+            what is being said.
+            A <a target="stenographer"
+                href="https://electronics.howstuffworks.com/question427.htm">stenographer</a>
+            listens to the broadcast and types
+            the words into a special computer program that adds the captions
+            to the television signal.
+        </p>
+
+        <h2>Closed Captioning is a Slow Process</h2>
+        <p>
+            This captioning can only go as fast as a human can
+            process information.
+            The average reaction time of a human is is 215 milliseconds,
+            according to the data collected so far.
+            In addition to your reaction time, there is additional
+            latency of your computer and the internet.
+        </p><p>
+            However it takes longer to determine the spoken words and
+            then type these into a computer terminal.
+            Your experience is seeing a delay of 4-8 seconds.
+            Humans are creating the transcriptions,
+            and errors are prone to happening.
+        </p>
+
+        <h2>Now we have Artificial Intelligence and it's Making Closed Captioning Easier</h2>
+        <p>
+            Yes it is true.
+            AI is taking jobs and very soon the stenographer
+            will be completely artificial.
+            You will get to take advantage of this technology right now,
+            further aiding the succession of artificial intelligence.
+        </p><p>
+            This is the future and early AI is starting to take jobs
+            from humans.
+            This is a real world example of this.
+            OBS Subtitles is a perfect example of AI taking a human job.
+            Instead of hiring a transcriber (stenographer) while you stream,
+            you can have a robot do it for, at no extra cost.
+        </p>
+
+        <h2>Why PubNub makes OBS Plugins Better</h2>
+        <p>
+            PubNub connects everything, everywhere,
+            providing data transfer from one app to another app.
+            In the case of the subtitles captured for Twitch TV,
+            your web browser app is sending data to your OBS app.
+            Essentially your computer is sending data to
+            itself between two apps.
+            Your voice is being transcribed in your web
+            browser using your microphone.
+            The resulting transcription is transmitted
+            into the OBS Browser Source.
+        </p><p>
+            <img src="https://i.imgur.com/fHPe9dZ.gif" 
+                alt="PubNub Twitch TV OBS Subtitles Plugin"
+                width="100%">
+        </p><p>
+            Imagine now you can send data directly into OBS
+            and create entirely new online live experiences.
+            You, or a friend, can use your an iPad to draw 
+            action lines on your live stream.
+            You can give remote control to channel mods to manage 
+            your screen display and make minor changes.
+            So many cool things can happen now.
+        </p><p>
+            PubNub can send data to anywhere.
+            More than just sending data from
+            one app into another app on the same computer.
+            PubNub can send data to other computers nearby.
+            It can even send data to computers around the world.
+            Anywhere the internet exists, data can be transferred.
+        </p><p>
+            PubNub can broadcast data from one app into all other apps.
+            Millions of apps all-at-once, and even more beyond that.
+        </p>
+    </div>
+
+    <div class="content">
+        <p>
+            <img src="https://www.pubnub.com/wp-content/uploads/2018/07/add-subtitles-to-twitch-tv-obs.png"
+                alt="Add OBS Browser Source"
+                width="100%">
+        </p>
+    </div>
+
+</div>
+
+<script src="js/dashboard.js"></script>
